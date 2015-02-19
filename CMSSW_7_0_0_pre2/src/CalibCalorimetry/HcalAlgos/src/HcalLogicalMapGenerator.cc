@@ -3619,7 +3619,8 @@ void HcalLogicalMapGenerator::buildZDCMap(const HcalTopology* topo, std::vector 
 
 
 //#########################################//
-void HcalLogicalMapGenerator::ConstructTriggerTower(const HcalTopology* topo,
+void HcalLogicalMapGenerator::ConstructTriggerTower(
+                                                    const HcalTopology* topo,
 						    std::vector <HTLogicalMapEntry>& HTEntries,
 						    int iside, int ieta, int iphi, int idphi, int idepth, std::string det, int iwedge, int irm,
 						    int ipixel, int iqie, int iadc, int irm_fi, int ifi_ch, int icrate, int ihtr, std::string fpga,

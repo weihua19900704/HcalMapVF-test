@@ -102,8 +102,8 @@ void HcalLogicalMap::printHTRLMap( unsigned int mapIOV )
   time(&myTime);
   
   strftime(tempbuff,128,"%d.%b.%Y",localtime(&myTime) );
-  mystream<<tempbuff;
-  date= mystream.str();
+  mystream << tempbuff;
+  date = mystream.str();
 
   mystream.str("");
   if      (mapIOV==1) IOVlabel = "A";
@@ -113,11 +113,11 @@ void HcalLogicalMap::printHTRLMap( unsigned int mapIOV )
   else if (mapIOV==5) IOVlabel = "E";
   else                IOVlabel = "F";
 
-  HBEFmapstr  = "./HCALmapHBEF_"+IOVlabel+".txt";
-  HOXmapstr   = "./HCALmapHO_"+IOVlabel+".txt";
-  CALIBmapstr = "./HCALmapCALIB_"+IOVlabel+".txt";
-  ZDCmapstr   = "./ZDCmap_"+IOVlabel+".txt";
-  HTmapstr    = "./HCALmapHT_"+IOVlabel+".txt";
+  HBEFmapstr  = "./HCALmapHBEF_" + IOVlabel + "_" + date + ".txt";
+  HOXmapstr   = "./HCALmapHO_" + IOVlabel + "_" + date + ".txt";
+  CALIBmapstr = "./HCALmapCALIB_" + IOVlabel + "_" + date + ".txt";
+  ZDCmapstr   = "./ZDCmap_"+ IOVlabel + "_" + date + ".txt";
+  HTmapstr    = "./HCALmapHT_" + IOVlabel + "_" + date + ".txt";
 
 //  HBEFmapstr  = "./HCALmapHBEF_"+date+".txt";
 //  HOXmapstr   = "./HCALmapHO_"+date+"_"+IOVlabel+".txt";
@@ -130,7 +130,6 @@ void HcalLogicalMap::printHTRLMap( unsigned int mapIOV )
   CALIBmap    = fopen(CALIBmapstr.c_str(),"w");
   ZDCmap      = fopen(ZDCmapstr.c_str(),"w");
   HTmap       = fopen(HTmapstr.c_str(),"w");
-  /**********************/
 
   if(HBEFmap) 
   {
@@ -171,7 +170,6 @@ void HcalLogicalMap::printHTRLMap( unsigned int mapIOV )
   }
   else 
     cout <<HTmapstr<<" not found!"<<endl;
-
 }
 
 
@@ -319,7 +317,6 @@ void HcalLogicalMap::printQIEMap( unsigned int mapIOV )
   QIEMapstr  = "./QIEMap_"+IOVlabel+".txt";
   
   QIEMap = fopen(QIEMapstr.c_str(),"w");
-   /**********************/
 
   if(QIEMap) 
   {
@@ -330,11 +327,7 @@ void HcalLogicalMap::printQIEMap( unsigned int mapIOV )
     cout <<QIEMapstr<<" not found!"<<endl;
 }
 
-
-
-
-
-/**************/
+//############################//
 HcalElectronicsMap HcalLogicalMap::generateHcalElectronicsMap()
 {
   HcalElectronicsMap* theemap = new HcalElectronicsMap();
@@ -368,23 +361,13 @@ HcalElectronicsMap HcalLogicalMap::generateHcalElectronicsMap()
 
 void HcalLogicalMap::printuHTREMap(std::ostream& fOutput)
 {
-
   fOutput << std::endl;
 
   char buf [1024];
   fOutput << "Here we start the emap entries for microTCA, HBHEHF: " << std::endl;
-  
-  //int slb_channel_index;
 
   for (std::vector<HBHEHFLogicalMapEntry>::const_iterator it = HBHEHFEntries_.begin(); it!=HBHEHFEntries_.end(); ++it)
   {
-    /*
-    if      (it->myslbin_ == "A0" || it->myslbin_ == "B0") { slb_channel_index=0; }
-    else if (it->myslbin_ == "A1" || it->myslbin_ == "B1") { slb_channel_index=1; }
-    else if (it->myslbin_ == "C0" || it->myslbin_ == "D0") { slb_channel_index=2; }
-    else if (it->myslbin_ == "C1" || it->myslbin_ == "D1") { slb_channel_index=3; }
-    else                                                   { slb_channel_index=-1; }
-    */
     sprintf (buf, " %7X %3d %3d %3c %4d %7d %10d %14d %7s %5d %5d %6d",
              it->hcalDetID_uhtr_,
              it->myuhtr_crate_, it->myuhtr_, 'u', it->myuhtr_dcc_, it->myuhtr_spigot_, it->myuhtr_htr_fi_, it->myfi_ch_,
@@ -395,7 +378,7 @@ void HcalLogicalMap::printuHTREMap(std::ostream& fOutput)
   }
 }
 
-/**************/
+//######################//
 
 void HcalLogicalMap::printHCALOfflineDB(FILE* hcalofflinedb)
 {

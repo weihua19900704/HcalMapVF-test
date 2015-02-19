@@ -49,7 +49,6 @@ class MapTester : public edm::EDAnalyzer
       explicit MapTester(const edm::ParameterSet&);
       ~MapTester();
 
-
    private:
 
       unsigned int mapIOV_;  //1 for first set, 2 for second, ...
