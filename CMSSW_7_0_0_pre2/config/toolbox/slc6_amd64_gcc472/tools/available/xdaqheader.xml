@@ -1,0 +1,7 @@
+<tool name="xdaqheader" version="VR17173-cms6">
+  <info url="http://home.cern.ch/xdaq"/>
+  <client>
+    <environment name="XDAQHEADER_BASE" default="/afs/cern.ch/cms/slc6_amd64_gcc472/external/xdaq/VR17173-cms6"/>
+    <environment name="INCLUDE" default="$XDAQHEADER_BASE/include"/>
+  </client>
+</tool>
