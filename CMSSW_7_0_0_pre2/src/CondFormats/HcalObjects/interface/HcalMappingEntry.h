@@ -83,11 +83,13 @@ class HOHXLogicalMapEntry
  public:
          
   HOHXLogicalMapEntry( ) {}
-  HOHXLogicalMapEntry(int in_fi_ch, int in_htr_fi, int in_spig, int in_fed, int in_cr, int in_htr, std::string in_s_fpga,
+  HOHXLogicalMapEntry(
+                      int in_fi_ch, int in_htr_fi, int in_spig, int in_fed, int in_cr, double in_block_coupler, int in_htr, std::string in_s_fpga,
 		      std::string in_s_det, int in_sid, int in_et, int in_ph, int in_dep,
 		      int in_dph, int in_sec, int in_rm, int in_rm_fi, int in_pix, int in_qie, int in_adc,
 		      std::string in_s_rbx, std::string in_s_let, 
-                      int in_qieid);
+                      int in_qieid
+                     );
 
   ~HOHXLogicalMapEntry() {}
 
@@ -109,6 +111,7 @@ class HOHXLogicalMapEntry
   int mydphi_, mysector_;
   std::string myletter_;
   int myqieid_;
+  double myblock_coupler_;
 };
 
 

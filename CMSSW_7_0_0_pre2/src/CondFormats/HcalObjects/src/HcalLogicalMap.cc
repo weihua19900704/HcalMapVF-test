@@ -450,7 +450,7 @@ void HcalLogicalMap::printHOXMap(FILE* hoxmapfile)
     if (titlecounter == 0)
     {
       fprintf(hoxmapfile,"#   side    eta    phi   dphi  depth    det     rbx  sector    rm  pixel   qie    adc");
-      fprintf(hoxmapfile,"  rm_fi  fi_ch let_code  crate    htr   fpga  htr_fi  dcc_sl  spigo    dcc  fedid  QIEId\n");
+      fprintf(hoxmapfile,"  rm_fi  fi_ch let_code  crate  block_coupler  htr   fpga  htr_fi  dcc_sl  spigo    dcc  fedid  QIEId\n");
     }
     titlecounter++;
     fprintf(hoxmapfile,"%s",it->printLMapLine());

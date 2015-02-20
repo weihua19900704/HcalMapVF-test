@@ -2968,6 +2968,9 @@ void HcalLogicalMapGenerator::buildHOXMap(const HcalTopology* topo,
         }
         //##################################################//
         //HO ReMap for mapIOV >= 6
+
+        double iblock_coupler = 0.00;
+
         if( mapIOV_ >= 6 )
         {
           int fpga_horemap_tmp = 0;
@@ -3070,7 +3073,7 @@ void HcalLogicalMapGenerator::buildHOXMap(const HcalTopology* topo,
         delete [] det_char;
        
         HOHXLogicalMapEntry hoxlmapentry(
-					 ifi_ch, ihtr_fi, ispigot, ifed, icrate, ihtr, fpga,
+					 ifi_ch, ihtr_fi, ispigot, ifed, icrate, iblock_coupler, ihtr, fpga,
 					 det, iside, ieta, iphi, idepth,
 					 idphi, isector, irm, irm_fi, ipixel, iqie, iadc,
 					 rbx, letter,
@@ -3126,7 +3129,7 @@ void HcalLogicalMapGenerator::buildHOXMap(const HcalTopology* topo,
             //Algorithm to add QIEId into HO map,we will use rbx,irm and iqie,add by hua.wei@cern.ch
 
             HOHXLogicalMapEntry hoxlmapentry(
-					     ifi_ch, ihtr_fi, ispigot, ifed, icrate, ihtr, fpga,
+					     ifi_ch, ihtr_fi, ispigot, ifed, icrate, iblock_coupler, ihtr, fpga,
 					     det, iside, ieta, iphi, idepth,
 					     idphi, isector, irm, irm_fi, ipixel, iqie, iadc,
 					     rbx, letter,
@@ -3183,7 +3186,7 @@ void HcalLogicalMapGenerator::buildHOXMap(const HcalTopology* topo,
             //Algorithm to add QIEId into HO map,we will use rbx,irm and iqie,add by hua.wei@cern.ch
 
             HOHXLogicalMapEntry hoxlmapentry(
-					     ifi_ch, ihtr_fi, ispigot, ifed, icrate, ihtr, fpga,
+					     ifi_ch, ihtr_fi, ispigot, ifed, icrate, iblock_coupler, ihtr, fpga,
 					     det, iside, ieta, iphi, idepth,
 					     idphi, isector, irm, irm_fi, ipixel, iqie, iadc,
 					     rbx, letter,

@@ -214,8 +214,7 @@ char* HBHEHFLogicalMapEntry::printLMapLine_uhtr()
 
 
 // class HOHXLogicalMapEntry 
-
-HOHXLogicalMapEntry::HOHXLogicalMapEntry(int in_fi_ch, int in_htr_fi, int in_spig, int in_fed, int in_cr, int in_htr, std::string in_s_fpga,
+HOHXLogicalMapEntry::HOHXLogicalMapEntry(int in_fi_ch, int in_htr_fi, int in_spig, int in_fed, int in_cr, double in_block_coupler, int in_htr, std::string in_s_fpga,
                                          std::string in_s_det, int in_sid, int in_et, int in_ph, int in_dep,
                                          int in_dph, int in_sec, int in_rm, int in_rm_fi, int in_pix, int in_qie, int in_adc,
                                          std::string in_s_rbx, std::string in_s_let,
@@ -255,6 +254,8 @@ HOHXLogicalMapEntry::HOHXLogicalMapEntry(int in_fi_ch, int in_htr_fi, int in_spi
   //QIEID input
   myqieid_ = in_qieid;
 
+  //Patch Panel Block and coupler input
+  myblock_coupler_ = in_block_coupler;
 }
   
 char* HOHXLogicalMapEntry::printLMapLine() 
@@ -311,10 +312,10 @@ char* HOHXLogicalMapEntry::printLMapLine()
 
   ( hcaleid.htrTopBottom()==0 ) ? myfpga = "bot" : myfpga = "top";
 
-  sprintf(myline,"%1d %6d %6d %6d %6d %6d %6s %7s %6d %6d %6d",0,myside,myeta,myphi,mydphi_,mydepth,mydet.c_str(),rbxid.rbx().c_str(),mysector_,rbxid.rm(),rbxid.pixel());
-  sprintf(myline+strlen(myline),"%6d %6d %6d %6d %8s %6d %6d %6s",rbxid.qieCard(),rbxid.adc(),rbxid.rmFiber(),hcaleid.fiberChanId(),myletter_.c_str(),hcaleid.readoutVMECrateId(),hcaleid.htrSlot(),myfpga.c_str());
-  sprintf(myline+strlen(myline),"%8d %7d %6d %6d %6d",hcaleid.fiberIndex(),mydcc_sl,hcaleid.spigot(),mydcc,hcaleid.dccid()+700);
-  sprintf(myline+strlen(myline)," %6d\n",myqieid_);
+  sprintf( myline , "%1d %6d %6d %6d %6d %6d %6s %7s %6d %6d %6d" , 0 , myside , myeta , myphi , mydphi_ , mydepth , mydet.c_str() , rbxid.rbx().c_str() , mysector_,rbxid.rm() , rbxid.pixel() );
+  sprintf( myline+strlen(myline) , "%6d %6d %6d %6d %8s %6d %12.2f %6d %6s" , rbxid.qieCard() , rbxid.adc() , rbxid.rmFiber() , hcaleid.fiberChanId() , myletter_.c_str() , hcaleid.readoutVMECrateId() , myblock_coupler_ , hcaleid.htrSlot() , myfpga.c_str() );
+  sprintf( myline+strlen(myline) , "%8d %7d %6d %6d %6d" , hcaleid.fiberIndex() , mydcc_sl , hcaleid.spigot() , mydcc , hcaleid.dccid()+700 );
+  sprintf( myline+strlen(myline) , " %6d\n" , myqieid_ );
   return myline;
 }
 
